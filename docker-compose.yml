@@ -34,6 +34,6 @@ networks:
     ipam:
       driver: default
       config:
-      - subnet: 10.1.4.0/30
+      - subnet: 10.1.4.0/28
   lb_web:
     external: true
