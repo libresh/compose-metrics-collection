@@ -2,6 +2,11 @@ version: '2'
 services:
   cadvisor:
     image: google/cadvisor
+    command:
+    - "--housekeeping_interval=30s"
+    - "--global_housekeeping_interval=2m"
+    - "--disable_metrics=disk,tcp"
+    - "--enable_load_reader"
     volumes:
     - "/:/rootfs:ro"
     - "/var/run:/var/run:rw"
