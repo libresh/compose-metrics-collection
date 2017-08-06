@@ -14,6 +14,46 @@ services:
     - "/var/lib/docker/:/var/lib/docker:ro"
     networks:
     - back
+  smart-exporter:
+    image: indiehosters/smartmontools
+    privileged: true
+    networks:
+    - back
+    entrypoint: "cron"
+    command:
+    - "--hours=0"
+    - "--minutes=23"
+    - "--seconds=0"
+    - "smartmon-prom"
+    volumes:
+    - "/system/metrics-collection/textfiles:/textfiles"
+  smart-short-test:
+    image: indiehosters/smart
+    privileged: true
+    networks:
+    - back
+    entrypoint: "cron"
+    command:
+    - "--hours=23"
+    - "--minutes=23"
+    - "--seconds=0"
+    - "short-test"
+    volumes:
+    - "/system/metrics-collection/textfiles:/textfiles"
+  smart-long-test:
+    image: indiehosters/smart
+    privileged: true
+    networks:
+    - back
+    entrypoint: "cron"
+    command:
+    - "--hours=0"
+    - "--minutes=10"
+    - "--seconds=0"
+    - "--day-of-week=SAT"
+    - "long-test"
+    volumes:
+    - "/system/metrics-collection/textfiles:/textfiles"
   node-exporter:
     image: quay.io/prometheus/node-exporter
     volumes:
