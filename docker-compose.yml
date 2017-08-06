@@ -28,7 +28,7 @@ services:
     volumes:
     - "/system/metrics-collection/textfiles:/textfiles"
   smart-short-test:
-    image: indiehosters/smart
+    image: indiehosters/smartmontools
     privileged: true
     networks:
     - back
@@ -41,7 +41,7 @@ services:
     volumes:
     - "/system/metrics-collection/textfiles:/textfiles"
   smart-long-test:
-    image: indiehosters/smart
+    image: indiehosters/smartmontools
     privileged: true
     networks:
     - back
