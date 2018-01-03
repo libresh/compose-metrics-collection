@@ -47,7 +47,7 @@ services:
     - back
     entrypoint: "cron"
     command:
-    - "--hours=0"
+    - "--hours=2"
     - "--minutes=10"
     - "--seconds=0"
     - "--day-of-week=SAT"
